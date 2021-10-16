@@ -48,7 +48,7 @@ struct Pictures
 int main()
 {
     txCreateWindow (1200, 800);
-    const char* PAGE = "Главная страница";
+    const char* PAGE = "ГѓГ«Г ГўГ­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г ";
     bool mneNadoelo = false;
     int x1 = 70;    int y1 = 125;
     int x2 = 450;
@@ -75,7 +75,7 @@ int main()
     knopka2.pic = txLoadImage("knopka231.bmp");
     knopka3.pic = txLoadImage("knopka24.bmp");
 
-    if (PAGE == "Главная страница")
+    if (PAGE == "ГѓГ«Г ГўГ­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г ")
     {
        txBegin();
        txTransparentBlt(txDC(),50,55,150,75,knopka1.pic, 0, 0, TX_WHITE);
@@ -147,6 +147,7 @@ int main()
     }
 
 
+        
     txSleep(2);
     txEnd();
     }
