@@ -1,17 +1,9 @@
 #include "TXLib.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
-bool focus(int x, int y, int x2, int y2)
-{
-    if (txMouseX() >= x && txMouseX() <= x2 &&
-        txMouseY() >= y && txMouseY() <= y2)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+using namespace std;
 
 bool click(int x, int y, int x2, int y2)
 {
@@ -27,132 +19,239 @@ bool click(int x, int y, int x2, int y2)
     }
 }
 
-int funct(int x, int y)
+
+
+struct Save
 {
-  HDC k1 = txLoadImage("knopka23.bmp");
-  HDC k2 = txLoadImage("knopka24.bmp");
-
-  txTransparentBlt(txDC(),x,y,150,75, k1, 0, 0, TX_WHITE);
-  txTransparentBlt(txDC(),x,y + 555,150,75, k2, 0, 0, TX_WHITE);
-
-}
-
-
-struct Pictures
-{
-  HDC pic;
-}
-;
-
+  int x1 = 0;
+  int y1 = 0;
+  int x2 = 0;
+  int y2 = 0;
+  const char* name;
+  COLORREF light = TX_RED;
+  string cvet = "blue";
+  bool visible = false;
+};
 
 int main()
-{
-    txCreateWindow (1200, 800);
-    const char* PAGE = "ГѓГ«Г ГўГ­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г ";
-    bool mneNadoelo = false;
-    int x1 = 70;    int y1 = 125;
-    int x2 = 450;
-    int x3 = 850;
-    mneNadoelo = false;
-    HDC dom1 = txLoadImage("house1.bmp");
-    HDC dom2 = txLoadImage("house2.bmp");
-    HDC dom3 = txLoadImage("house3.bmp");
-    HDC dom4 = txLoadImage("house4.bmp");
-    HDC z1 = txLoadImage("zavod1.bmp");
-    HDC z2 = txLoadImage("zavod2.bmp");
-    HDC z3 = txLoadImage("zavod3.bmp");
-    HDC z4 = txLoadImage("zavod4.bmp");
+    {
 
+    txCreateWindow (1500, 800);
+    bool mnenadoelo = false;
     txSetFillColour(TX_BLACK);
+    txSetColour(TX_WHITE);
+    int x1 = 0;
+    int y1 = 0;
+    int x2 = 0;
+    int y2 = 0;
+    Save block[20];
 
-    while(!mneNadoelo)
+
+     block[0].x1 =400;
+     block[0].y1 =100;
+     block[0].x2 =200;
+     block[0].y2 =200;
+     block[0].light = TX_GREEN;
+     block[0].cvet="hwfwfl";
+     block[0].visible= true;
+block[0].name ="fkeofkll";
+
+ block[1].x1 =100;
+     block[1].y1 =300;
+     block[1].x2 =200;
+     block[1].y2 =350;
+     block[1].light = TX_RED;
+     block[1].cvet="hlgwrg"       ;
+     block[1].visible =true;
+block[1].name ="RED";
+
+
+
+    int b_i = 2;
+  /*  setlocale(LC_ALL, "Russian");
+    WIN32_FIND_DATAW wfd;
+    HANDLE const hFind = FindFirstFileW(L"bin\\*", &wfd);
+
+    if(INVALID_HANDLE_VALUE != hFind)
     {
-    Pictures knopka1;
-    Pictures knopka2;
-    Pictures knopka3;
+      do {
 
-    knopka1.pic = txLoadImage("knopka23.bmp");
-    knopka2.pic = txLoadImage("knopka231.bmp");
-    knopka3.pic = txLoadImage("knopka24.bmp");
+      wcout << &wfd.cFileName[0] << endl;
 
-    if (PAGE == "ГѓГ«Г ГўГ­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г ")
+      }
+
+      while(NULL != FindNextFileW(hFind, &wfd));
+      FindClose(hFind);
+
+      system("pause");
+
+    }      */
+
+int a=0;
+
+while(!mnenadoelo)
     {
-       txBegin();
-       txTransparentBlt(txDC(),50,55,150,75,knopka1.pic, 0, 0, TX_WHITE);
-       txTransparentBlt(txDC(),450,55,150,75,knopka2.pic, 0, 0, TX_WHITE);
-       txTransparentBlt(txDC(),50,600,150,75,knopka3.pic, 0, 0, TX_WHITE);
-       txTransparentBlt(txDC(),450,600,150,75,knopka3.pic, 0, 0, TX_WHITE);
-       txTransparentBlt(txDC(),650,55,150,75,knopka1.pic, 0, 0, TX_WHITE);
+
+txSetFillColour(TX_BLACK);
+    txClear();
+txBegin;
 
 
-    if(click (50, 55, 200, 130))
-    {
-    txTransparentBlt(txDC(),x1,y1,100,80,dom1, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x1,y1 + 100,100,80,dom2, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x1,y1 + 200,105,84,dom3, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x1,y1 + 300,100,83,dom4, 0, 0, TX_WHITE);
+    txRectangle(1265, 20, 1435, 70);
+    txRectangle(1265, 90, 1435, 140);
+    txRectangle(1265, 160, 1435, 210);
+    txRectangle(1265, 230, 1435, 280);
+    txRectangle(1265, 300, 1435, 350);
+    txRectangle(1265, 370, 1435, 420);
+    txRectangle(1265, 440, 1435, 490);
+    txRectangle(1265, 510, 1435, 560);
+    txRectangle(1265, 640, 1435, 690);
+    txRectangle(1265, 710, 1435, 760);
+    txLine(1200, 0, 1200, 800);
+    txDrawText(1265, 20, 1435, 70, "Логотип");
+    txDrawText(1265, 90, 1435, 140, "Cтрока поиска");
+    txDrawText(1265, 160, 1435, 210, "Телефон");
+    txDrawText(1265, 230, 1435, 280, "Меню");
+    txDrawText(1265, 300, 1435, 350, "Шапка");
+    txDrawText(1265, 370, 1435, 420, "Левая колонка");
+    txDrawText(1265, 440, 1435, 490, "Содержимое");
+    txDrawText(1265, 510, 1435, 560, "Подвал");
+    txDrawText(1265, 640, 1435, 690, "Сохранить проект"); //неиспользован
+    txDrawText(1265, 710, 1435, 760, "Главное меню"); //неиспользован
+
+   int z;
+    for(int i = 0; i < 20; i++)
+    if (block[i].visible)
+    { //cout<<endl<<i<<"  ---  "<<block[i].cvet<<endl;
+
+
+    txSetFillColour(block[i].light);
+    txRectangle(block[i].x1, block[i].y1, block[i].x2, block[i].y2);
+    //txDrawText(block[i].x1, block[i].y1, block[i].x2, block[i].y2, block[i].name);
+
     }
 
-    if(click (450, 55, 600, 130))
-{
-    txTransparentBlt(txDC(),x2,y1,125,83,z1, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x2,y1 + 100,125,106,z2, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x2,y1 + 230,165,69,z3, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x2,y1 + 360,125,99,z4, 0, 0, TX_WHITE);
+
+
+      if (txMouseButtons() == 1)
+        {
+        block[b_i].x1 = txMouseX();
+        block[b_i].y1 = txMouseY();
+
+        while (txMouseButtons() == 1)
+        {
+        block[b_i].x2 = txMouseX();
+        block[b_i].y2 = txMouseY();
+        }
+
+        txSetFillColour(block[b_i].light);
+
+
+
+
+        }
+
+
+         txRectangle(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2);
+
+             cout<<";j;j;";
+
+
+
+
+    if (click (1265, 20, 1435, 70))
+    {
+    txDrawText(100, 100, 200, 200, "Логотип");
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Логотип");
+     block[b_i].name = "Логотип";
+     block[b_i].light = TX_GREEN;
+     block[b_i].cvet = "blue";
+     block[b_i].visible = true;
+  cout<<"lbjlkjbl";cin>> z;
+     for(int i = 0; i < 20; i++)
+    if (block[i].visible)  cout<<i<<" "<<block[i].cvet;
+    b_i++;
+
+
+    txSleep(200);
+    cin>>z;
+    // const char* name = txInputBox("Введите имя файла", "Конструктор сайтов", "picture name");
+    // txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, name);
+    }
+
+
+
+    if (click (1265, 90, 1435, 140))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Строка поиска");
+      block[b_i].name = "Строка поиска";
+       //block[b_i].light = TX_BLUE;
+      b_i++;
+    }
+
+    if (click (1265, 160, 1435, 210))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Телефон");
+     block[b_i].name = "Телефон";
+      b_i++;
+    }
+
+
+    if (click (1265, 230, 1435, 280))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Меню");
+     block[b_i].name = "Меню";
+     b_i++;
+    }
+
+    if (click (1265, 300, 1435, 350))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Шапка");
+     block[b_i].name = "Шапка";
+     b_i++;
+    }
+
+    if (click (1265, 370, 1435, 420))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Левая колонка");
+     block[b_i].name = "Левая колонка";
+     b_i++;
+    }
+
+    if (click (1265, 440, 1435, 490))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Содержимое");
+     block[b_i].name = "Содержимое";
+     b_i++;
+    }
+
+    if (click (1265, 510, 1435, 560))
+    {
+     txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "Подвал");
+     block[b_i].name = "Подвал";
+     b_i++;
+    }
+
+    if (click (1265, 640, 1435, 690))
+    {
+    /* ofstream fileSave("document.txt");
+
+     fileSave << "Координаты" << std::endl;
+     fileSave << block[b_i].x1 << std::endl;
+     fileSave << block[b_i].y1 << std::endl;
+     fileSave << block[b_i].x2 << std::endl;
+     fileSave << block[b_i].y2 << std::endl;
+     fileSave << block[b_i].name << std::endl;
+     fileSave.close();*/
+    }
+    //txSetFillColour(TX_BLACK);
+    //txClear();
+
+       txSleep(100);
+    txEnd;
+
 }
-
-    if(click (650, 55, 1000, 130))
-{
-    txTransparentBlt(txDC(),x3,y1,125,83,z1, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x3,y1 + 100,125,106,z2, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x3,y1 + 230,125,69,z3, 0, 0, TX_WHITE);
-    txTransparentBlt(txDC(),x3,y1 + 360,125,99,z4, 0, 0, TX_WHITE);
-}
-
-    if (click (50, 600, 200, 675))
-    {
-     txClear();
-
-    }
-
-    if (click (450, 600, 600, 675))
-    {
-     txClear();
-
-    }
-
-    if (click (850, 600, 1000, 675))
-    {
-     txClear();
-
-    }
-
-    funct(450, 200);
-
-
-    if (click (70, 125, 800, 600))
-    {
-      txMouseButtons() == 1;
-      txClear();
-      txTransparentBlt(txDC(),txMouseX(),txMouseY(),100,80,dom1, 0, 0, TX_WHITE);
-
-    }
-
-
-    }
-
-    if(GetAsyncKeyState(VK_ESCAPE))
-    {
-        mneNadoelo = true;
-    }
-
-
-        
-    txSleep(2);
-    txEnd();
-    }
-
 
     return 0;
-}
+    }
 
