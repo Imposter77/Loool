@@ -216,6 +216,7 @@ int main()
     {
       txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "p");
       block[b_i].name = "p";
+      block[b_i].cvet = "red";
       block[b_i].light = TX_RED;
       block[b_i].visible = true;
       b_i++;
@@ -226,6 +227,7 @@ int main()
     {
      txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "a");
      block[b_i].name = "a";
+     block[b_i].cvet = "yellow";
      block[b_i].light = TX_YELLOW;
      block[b_i].visible = true;
      b_i++;
@@ -235,6 +237,7 @@ int main()
     {
      txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "img");
      block[b_i].name = "img";
+     block[b_i].cvet = "brown";
      block[b_i].light = TX_BROWN;
      block[b_i].visible = true;
      b_i++;
@@ -244,6 +247,7 @@ int main()
     {
      txDrawText(block[b_i].x1, block[b_i].y1, block[b_i].x2, block[b_i].y2, "text");
      block[b_i].name = "text";
+     block[b_i].cvet = "pink";
      block[b_i].light = TX_PINK;
      block[b_i].visible = true;
      b_i++;
