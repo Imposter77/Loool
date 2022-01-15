@@ -40,7 +40,7 @@ struct Text
 {
   string words = "";
   COLORREF cvet = TX_BLACK;
-  int size=10;
+  int size = 10;
   int x = 0;
   int y = 0;
 
@@ -126,22 +126,23 @@ int Denis_add_text()
     int fontSize = 20;
 
      const char* name = txInputBox ("Введите текст", "System", "");
+ int x = 10,y = 10;
+ txSelectFont ("Arial", 100);
+    while (!txMouseButtons() == 1)
 
-    while (!txMouseButtons() == 1);
 
-        int x = 10,y = 10;
-        x = txMouseX();
+       { x = txMouseX();
         y = txMouseY();
 
-        txSelectFont ("Arial", 100);
 
-        if(GetAsyncKeyState(1))  fontSize = 100;
-        if(GetAsyncKeyState(2))  fontSize = 85;
-        if(GetAsyncKeyState(3))  fontSize = 70;
-        if(GetAsyncKeyState(4))  fontSize = 55;
-        if(GetAsyncKeyState(5))  fontSize = 40;
-        if(GetAsyncKeyState(6))  fontSize = 25;
 
+        if(GetAsyncKeyState('1'))  fontSize = 100;
+        if(GetAsyncKeyState('2'))  fontSize = 85;
+        if(GetAsyncKeyState('3'))  fontSize = 70;
+        if(GetAsyncKeyState('4'))  fontSize = 55;
+        if(GetAsyncKeyState('5'))  fontSize = 40;
+        if(GetAsyncKeyState('6'))  fontSize = 25;
+        }
         txSelectFont ("Arial", fontSize);
 
 
@@ -168,7 +169,7 @@ int Denis_add_text()
         block[b_i-1].p[block[b_i-1].pCount].y = y;
         block[b_i-1].pCount++;
 
-         txSelectFont ("Arial", 15);
+         txSelectFont ("Arial", 20);
          txSleep(1000);
 }
 
@@ -265,7 +266,7 @@ int converHTML()
      fileSave << block[b_i].light << std::endl; */
      fileSave.close();
 
-     txMessageBox("Проект Конвертирован");
+     txMessageBox("Проект конвертирован");
 }
 
 
